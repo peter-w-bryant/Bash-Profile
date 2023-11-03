@@ -1,1 +1,1 @@
-C:/Users/pwbry/.bash_profile
+if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
