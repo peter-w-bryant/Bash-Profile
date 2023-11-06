@@ -29,6 +29,14 @@ alias gs='git status'
 alias gl='git log'
 alias acp='function gitacp() { git add .; git commit -m "${1:-Updates}"; git push; }; gitacp' # Add, commit, push
 
+# List all remote branch
+alias gbr='git branch -r'
+
+# Remove tracked file and remove from cache
+function gitrm() {
+    git rm -r --cached "$1"
+}
+
 # --- DOCKER ---
 alias docker_compose_bu='docker_compose_bu() { docker compose build && docker compose up; }; docker_compose_bu'
 
@@ -59,7 +67,8 @@ function go() {
         dl) cd ~/Downloads;;
         dt) cd ~/Desktop;;
         home) cd ~;;
-        proj) cd C:/Projects;;
+        proj) cd C:/Projects/Git;;
+        kbai) cd C:/Users/pwbry/Documents/georgia_tech/KBAI;;
         *) echo "Don't know where to go?";;
     esac
 }
@@ -187,5 +196,29 @@ LIGHT_CYAN='\[\033[1;36m\]'
 WHITE='\[\033[1;37m\]'
 NC='\[\033[0m\]' # No Color
 
-# Example PS1
-export PS1="${LIGHT_GREEN}\u@\h${NC}:${BLUE}\w${NC}\$ "
+# Standard Colors for Bash
+# export PS1="${LIGHT_GREEN}\u@\h${NC}:${BLUE}\w${NC}\$ "
+
+# Solarized Colors for Bash
+SOLARIZED_BASE03="\[\033[0;30m\]"  # dark gray
+SOLARIZED_BASE02="\[\033[1;30m\]"  # bright black
+SOLARIZED_BASE01="\[\033[0;32m\]"  # green
+SOLARIZED_BASE00="\[\033[1;32m\]"  # bright green
+SOLARIZED_BASE0="\[\033[0;34m\]"   # blue
+SOLARIZED_BASE1="\[\033[1;34m\]"   # bright blue
+SOLARIZED_BASE2="\[\033[0;37m\]"   # white
+SOLARIZED_BASE3="\[\033[1;37m\]"   # bright white
+SOLARIZED_YELLOW="\[\033[0;33m\]"  # yellow
+SOLARIZED_ORANGE="\[\033[1;31m\]"  # orange
+SOLARIZED_RED="\[\033[0;31m\]"     # red
+SOLARIZED_MAGENTA="\[\033[0;35m\]" # magenta
+SOLARIZED_VIOLET="\[\033[1;35m\]"  # bright magenta
+SOLARIZED_BLUE="\[\033[0;34m\]"    # blue
+SOLARIZED_CYAN="\[\033[0;36m\]"    # cyan
+SOLARIZED_GREEN="\[\033[0;32m\]"   # green
+
+# No Color
+NC="\[\033[0m\]" # Text Reset
+
+# Custom Promp: Current is Solarized Dark with Yellow Path
+export PS1="${SOLARIZED_BASE02}\u@\h${NC}:${SOLARIZED_YELLOW}\w${NC}\$ "
