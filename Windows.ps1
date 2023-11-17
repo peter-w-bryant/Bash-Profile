@@ -1,6 +1,5 @@
-# . .\Windows.ps1
-# Move-CursorRandomly
-function Move-CursorRandomly {
+# Bash: powershell.exe -Command ". ./Windows.ps1; MCR"
+function MCR {
     # Add the necessary assembly
     Add-Type -assemblyName System.Windows.Forms
 
