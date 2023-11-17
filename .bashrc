@@ -1,5 +1,6 @@
 # Apply changes: source ~/.bashrc
 alias bashrc='source ~/.bashrc'
+alias bashrc_edit='code ~/.bashrc'
 
 # 1. -- Aliases --
 alias c='clear'
@@ -103,16 +104,20 @@ alias grep='grep --color=auto' # Highlight grep results
 alias ngrep='grep -n' # grep with line numbers
 
 # --- File Searching ---
-# Search for a file with a given name in the current directory and subdirectories
-# $1: The file name or pattern to search for
-function fsearch() {
-    find . -type f -name "$1"
+# The `fs` function is a custom function that allows you to search for files in the current directory and its subdirectories.
+function fs() {
+    if [ -z "$2" ]; then
+        find . -type f -name "$1"
+    else
+        find . -type f -name "$1" | head -n $2
+    fi
 }
+
 
 # CD into the directory of the file returned by fsearch
 # $1: The file name or pattern to search for
 function fcd() {
-    cd "$(dirname "$(fsearch "$1")")"
+    cd "$(dirname "$(fs "$1")")"
 }
 
 # 6. -- File and Directory Operations --
