@@ -182,6 +182,9 @@ function gpr() {
 # Delete local branches that are not on remote
 alias gclean='git fetch -p && git branch -vv | awk "/: gone]/{print $1}" | xargs git branch -d'
 
+# Mouse Jiggler
+alias jiggle='powershell.exe -Command ". ./Windows.ps1; MCR"'
+
 # Define colors
 BLACK='\[\033[0;30m\]'
 RED='\[\033[0;31m\]'
