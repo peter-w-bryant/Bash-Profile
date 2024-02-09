@@ -46,6 +46,11 @@ alias acp='function gitacp() { git add .; git commit -m "${1:-Updates}"; git pus
 # List all remote branch
 alias gbr='git branch -r'
 
+# Add remote for local repository
+function gremote() {
+    git remote add origin "$1"
+}
+
 # Remove tracked file and remove from cache
 function gitrm() {
     git rm -r --cached "$1"
